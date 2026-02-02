@@ -31,7 +31,7 @@ def get_tickets(max_per_buyer: int, remaining_tickets: int) -> int:
     """
     while True:
         try:
-            ask = f"How many tickets would you like to buy (1-{max_per_buyer})? "
+            ask = f"Input how many tickets you want to purchase (1-{max_per_buyer})? "
             tickets = int(input(ask))
 
             if tickets < 1 or tickets > max_per_buyer:
@@ -99,3 +99,4 @@ def sell_tickets() -> None:
 if __name__ == "__main__":
 
     sell_tickets()
+
