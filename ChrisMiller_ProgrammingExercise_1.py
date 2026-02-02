@@ -5,14 +5,14 @@ Asks users until all tickets are sold, then prints total buyers.
 """
 
 
-def get_tickets(max_per_buyer: int, remaining_tickets: int) -> int:
+def get_tickets(max_per_buyer: int, tickets_left: int) -> int:
     """
      Description
         asks the user for a valid number of tickets to buy and returns it after validation.
 
      Parameters
         - max_per_buyer: maximum tickets allowed per person
-        - remaining_tickets: tickets still available for sale
+        - tickets_left: tickets still available for sale
 
      Variables used
         - tickets: user entered number of tickets
@@ -22,7 +22,7 @@ def get_tickets(max_per_buyer: int, remaining_tickets: int) -> int:
         - Loop until valid input received
         - Get user input
         - Check if input is between 1 and max_per_buyer
-        - Check if input does not exceed remaining_tickets
+        - Check if input does not exceed tickets_left
         - If valid return number
         - Otherwise print error message and repeat
 
@@ -36,8 +36,8 @@ def get_tickets(max_per_buyer: int, remaining_tickets: int) -> int:
 
             if tickets < 1 or tickets > max_per_buyer:
                 print(f"Please enter a number between 1 and {max_per_buyer}.")
-            elif tickets > remaining_tickets:
-                print(f"Sorry, only {remaining_tickets} ticket(s) remaining.")
+            elif tickets > tickets_left:
+                print(f"Sorry, only {tickets_left} ticket(s) remaining.")
             else:
                 return tickets
 
@@ -56,16 +56,16 @@ def sell_tickets() -> None:
      Variables
         - TOTAL_TICKETS: constant (20) total tickets available
         - MAX_PER_BUYER: constant (4) max tickets per person
-        - remaining_tickets: accumulator tracking unsold tickets
+        - tickets_left: accumulator tracking unsold tickets
         - buyer_count: accumulator tracking number of buyers
         - tickets_bought: number of tickets bought in current iteration
 
      Logical steps
-        - Initialize constants and accumulators (remaining_tickets = 20, buyer_count = 0)
+        - Initialize constants and accumulators (tickets_left = 20, buyer_count = 0)
         - Display welcome message and limits
-        - While remaining_tickets > 0:
+        - While tickets_left > 0:
            - Call get_tickets() to get valid purchase amount
-           - Subtract purchased tickets from remaining_tickets
+           - Subtract purchased tickets from tickets_left
            - Increment buyer_count
            - Show confirmation and updated remaining tickets
         - When loop ends → print sold-out message and final buyer count
@@ -76,21 +76,21 @@ def sell_tickets() -> None:
     TOTAL_TICKETS = 10
     MAX_PER_BUYER = 4
 
-    remaining_tickets = TOTAL_TICKETS
+    tickets_left = TOTAL_TICKETS
     buyer_count = 0
 
     print("Welcome to Movie Ticket Pre-Sale!")
     print(f"Total tickets available: {TOTAL_TICKETS}")
     print(f"Limit: {MAX_PER_BUYER} tickets per person\n")
 
-    while remaining_tickets > 0:
-        tickets_bought = get_tickets(MAX_PER_BUYER, remaining_tickets)
+    while tickets_left > 0:
+        tickets_bought = get_tickets(MAX_PER_BUYER, tickets_left)
 
-        remaining_tickets -= tickets_bought
+        tickets_left -= tickets_bought
         buyer_count += 1
 
         print(f"Thank you! You bought {tickets_bought} ticket(s).")
-        print(f"Tickets remaining: {remaining_tickets}\n")
+        print(f"Tickets remaining: {tickets_left}\n")
 
     print("=== All tickets have been sold! ===")
     print(f"Total number of buyers: {buyer_count}")
@@ -99,4 +99,5 @@ def sell_tickets() -> None:
 if __name__ == "__main__":
 
     sell_tickets()
+
 
