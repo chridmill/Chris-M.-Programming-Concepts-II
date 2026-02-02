@@ -73,7 +73,7 @@ def sell_tickets() -> None:
      Return
         None (prints output)
     """
-    TOTAL_TICKETS = 20
+    TOTAL_TICKETS = 10
     MAX_PER_BUYER = 4
 
     remaining_tickets = TOTAL_TICKETS
@@ -97,4 +97,5 @@ def sell_tickets() -> None:
 
 
 if __name__ == "__main__":
+
     sell_tickets()
